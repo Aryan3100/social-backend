@@ -5,6 +5,7 @@ config();
 module.exports = function auth(req,res, next) {
     // const authtoken = req.headers.authorization;
     const cookie = req.cookies.token;
+    console.log(cookie)
 
     // if(!authtoken || !authtoken.startsWith('Bearer')) return res.json({msg:'please login again or token not provided'});
     if(!cookie) return res.status(401).json({msg:'please login again or token not provided'})

@@ -37,11 +37,13 @@ router.post('/login', async(req,res)=>{
         const refreshToken = jwt.sign({_id:user._id}, process.env.REFRESH_JWT, {expiresIn: '7d'})
         res.cookie('token',token, {
             httpOnly: true,
-            sameSite: "Strict",
+            sameSite: "none",
+             secure: true,
         maxAge: 1000 * 60 * 15, // mile * second * mint
         }).cookie('refresh', refreshToken, {
             httpOnly: true,
-            sameSite: "strict",
+            sameSite: "none",
+             secure: true,
             maxAge:1000* 60 * 60 * 24 * 7
         })
         res.json({msg: 'sucessfull',user:user})
