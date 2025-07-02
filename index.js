@@ -9,7 +9,7 @@ require('dotenv').config()
 const app = express();
 app.use(cors(
     {
-       origin: "http://localhost:5173", // frontend URL
+       origin: process.env.frontendURL, // frontend URL
     credentials: true,
     }
 ))
