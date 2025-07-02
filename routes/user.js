@@ -83,7 +83,8 @@ router.get('/auth/refresh', async(req,res)=> {
     const acesstoken = jwt.sign({_id:user._id}, process.env.JWT_SECRET , {expiresIn: '15m'})
     res.cookie('token', acesstoken, {
         httpOnly: true,
-        sameSite: true
+          sameSite: "None",
+  secure: true, 
     })
     res.json({msg:'cookie send'})
     } catch (error) {
