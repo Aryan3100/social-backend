@@ -54,25 +54,25 @@ router.post('/login', async(req,res)=>{
 
 })
 
-router.get('/refresh', async(req,res)=> {
-    const refresh = req.cookies.refresh;
-    if(!refresh) return res.json('please login agian ');
-    const token = jwt.verify(refresh, process.env.REFRESH_JWT)
-   try {
-     const user = await User.findById(token._id);
-     res.json({user:user})
-   } catch (error) {
-     res.json({msg:'please login'})
-   }
-    // const acesstoken = jwt.sign({_id:user._id}, process.env.JWT_SECRET , {expiresIn: '15m'})
-    // res.cookie('token', acesstoken, {
-    //     httpOnly: true,
-    //     sameSite: true
-    // })
+// router.get('/refresh', async(req,res)=> {
+//     const refresh = req.cookies.refresh;
+//     if(!refresh) return res.json('please login agian ');
+//     const token = jwt.verify(refresh, process.env.REFRESH_JWT)
+//    try {
+//      const user = await User.findById(token._id);
+//      res.json({user:user})
+//    } catch (error) {
+//      res.json({msg:'please login'})
+//    }
+//     // const acesstoken = jwt.sign({_id:user._id}, process.env.JWT_SECRET , {expiresIn: '15m'})
+//     // res.cookie('token', acesstoken, {
+//     //     httpOnly: true,
+//     //     sameSite: true
+//     // })
    
-})
+// })
 
-router.get('/auth/refresh', async(req,res)=> {
+router.get('/refresh', async(req,res)=> {
     const refresh = req.cookies.refresh;
     console.log(refresh)
     if(!refresh) return res.json('please login agian ');
